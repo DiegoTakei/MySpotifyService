@@ -1,0 +1,32 @@
+<div class="jumbotron">
+    <h3>{{app}}</h3>
+    <div ng-show="albuns.length > 0">
+        <h5 class="centerMusica">Álbuns Salvos</h5>
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Nome</th>
+                <th>Artista</th>
+               
+            </tr>
+            <tr ng-class="{selecionado: musica.selecionado}" ng-repeat="album in albuns">
+                <td>
+                    <input type="checkbox" ng-model="musica.selecionado">
+                </td>
+                <td><a href="/album" ng-click="getInfoAlbum(album)">{{album.name}}</td>
+                <td>{{album.artist.name}}</td>
+            </tr>
+        </table>
+    </div>
+    <hr/>
+    <input class="form-control" type="text" ng-model="musica.name" placeholder="Nome" />
+    <input class="form-control" type="text" ng-model="album.artist.name" placeholder="Artista" />
+    <input class="form-control" type="text" ng-model="album.name" placeholder="Álbum" />
+    <input class="form-control" type="text" ng-model="musica.year" placeholder="Ano de Lançamento" />
+    <input class="form-control" type="text" ng-model="musica.duration" placeholder="Duração" />
+    
+
+    <button class="btn btn-primary btn-block" ng-click="adicionarMusica(musica,album)" ng-disabled="!musica.name || !album.artist.name || !album.name 
+    || !musica.year || !musica.duration">Adicionar Música</button>
+    <button class="btn btn-danger btn-block" ng-click="removerMusica(musicas)" ng-show="isMusicaSelecionado(musicas)"> Remover Artista</button>
+</div>

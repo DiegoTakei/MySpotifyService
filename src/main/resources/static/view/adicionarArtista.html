@@ -1,0 +1,41 @@
+<div class="jumbotron">
+    <h3 class="center">{{app}}</h3>
+    <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="Pesquisar artista">
+    <h5 class="center">Artistas Salvos</h5>
+    <table ng-show="artistas.length > 0" class="table">
+        <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>Nota do Artista</th>
+            <th>Imagem</th>
+            
+        </tr>
+        <tr ng-class="{selecionado: artista.selecionado}" ng-repeat="artista in artistas | filter:{name:criterioDeBusca}">
+            <td>
+                <input type="checkbox" ng-model="artista.selecionado">
+            </td>
+            <td><a href="/artista" ng-click="getInfoArtista(artista)"> {{artista.name}}</td>
+            <td>{{artista.rating}}</td>
+            <img class="img-thumbnail" ng-src="{{artista.linkPhoto}}" width="1px"/>
+            
+        </tr>
+    </table>
+    <h5 class="center">Últimas músicas ouvidas</h5>
+    <table ng-show="lastMusics.length > 0" class="table">
+        <tr>
+            <th></th>
+            <th>Música</th>
+            <th>Artista</th>
+        </tr>
+        <tr ng-repeat="lastMusic in lastMusics">
+            <td></td>
+            <td>{{lastMusic.music.name}}</td>
+            <td>{{lastMusic.artist.name}}</td>
+        </tr>
+    </table>
+    <hr/>
+    <input class="form-control" type="text" ng-model="artista.name" placeholder="Nome"/>
+    <input class="form-control" type="text" ng-model="artista.linkPhoto" placeholder="Imagem"/>
+    <button class="btn btn-outline-primary btn-block" ng-click="adicionarArtista(artista)" ng-disabled="!artista.name"> Adicionar Artista</button>
+    <button class="btn btn-outline-danger btn-block" ng-click="removerArtista(artistas)" > Remover Artista</button>
+</div>

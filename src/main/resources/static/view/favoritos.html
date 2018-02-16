@@ -1,0 +1,18 @@
+<div class="jumbotron">
+    <h5 class="center">Artistas Favoritos</h5>
+    <table ng-show="artistas.length > 0" class="table">
+        <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>Imagem</th>
+            <th>Nota do Artista</th>
+        </tr>
+        <tr ng-class="{selecionado: artista.selecionado}" ng-repeat="artista in artistasFavoritos | filter:{name:criterioDeBusca}">
+            <td></td>
+            <td>
+                <a href="/artista" ng-click="getInfoArtista(artista)"> {{artista.name}}</td>
+            <img class="img-thumbnail" ng-src="{{artista.linkPhoto}}"/>
+            <td>{{artista.rating}}</td>
+        </tr>
+    </table>
+</div>
