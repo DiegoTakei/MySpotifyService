@@ -41,6 +41,10 @@ var app = angular.module("mySpotify").config(function ($routeProvider, $location
         templateUrl: 'view/login.html',
         controller: "loginController"
     });
+    $routeProvider.when('/', {
+        templateUrl: 'view/login.html',
+        controller: "loginController"
+    });
     $routeProvider.when("/favoritos",{
         templateUrl: "view/favoritos.html",
         controller: "artistasController"
